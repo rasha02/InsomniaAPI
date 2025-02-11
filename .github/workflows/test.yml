@@ -23,13 +23,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
        - name: Checkout branch1
-          uses: actions/checkout@v1
-      - uses: kong/setup-inso@v1
-        with:
+         uses: actions/checkout@v1
+       - uses: kong/setup-inso@v1
+         with:
           inso-version: 2.4.0
-      - name: Lint
-        run: inso lint spec "Doc-InsoTest" --ci
-      - name: Run test suites
-        run: inso run test "uts_a6a7f2" --env "ReqresEnv" --ci
-        - name: Generate declarative config
-        run: inso generate config "Doc-InsoTest" --type declarative --ci
+       - name: Lint
+         run: inso lint spec "Doc-InsoTest" --ci
+       - name: Run test suites
+         run: inso run test "uts_a6a7f2" --env "ReqresEnv" --ci
+       - name: Generate declarative config
+         run: inso generate config "Doc-InsoTest" --type declarative --ci
