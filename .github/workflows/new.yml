@@ -20,10 +20,15 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-        - uses: kong/setup-inso@v1
-           with:
-          inso-version: 10.1.1
+    steps: 
+      - name: Checkout branch
+        uses: actions/checkout@v1
+      - uses: kong/setup-inso@v1
+        with: 
+            inso-version: 10.1.1   
+      - run: inso --version
+        id: inso_version
+      - run: echo '${{ toJson(steps.inso_version.outputs) }}'
       - name: Lint
         run: inso lint spec "Doc-InsoTest " --ci
       - name: Run test suites
